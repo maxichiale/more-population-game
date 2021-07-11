@@ -1,4 +1,7 @@
 import React from 'react';
+import {
+    Link
+} from "react-router-dom";
 import './Home.css';
 
 function Home() {
@@ -8,7 +11,7 @@ function Home() {
         <div className="home">
             <h1>The More Population Game</h1>
             <p>Who has more population?</p>
-            <button> Play</button>
+            <Link to="/game">Play</Link>
         </div>
     );
 }
