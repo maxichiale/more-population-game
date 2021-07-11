@@ -30,6 +30,7 @@
 
 .title{
     background-image: url(https://media.giphy.com/media/l41lHDSvmwnQGDUD6/giphy.gif);
+    /*https://media.giphy.com/media/elzCnIQAjQMWA/giphy.gif*/
     background-size: cover;
     color: transparent;
     -moz-background-clip: text;
@@ -46,4 +47,17 @@
     color: #000000;
     letter-spacing: 1px;
     text-align: center;
+}
+
+.play{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: red;
+    text-decoration: none;
+    width: 100px;
+    text-align: center;
+    border-radius: 10px;
+    height: 30px;
 }

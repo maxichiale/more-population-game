@@ -72,16 +72,24 @@ function Game() {
 
     return (
         <div className="game">
-            <h1>The More Population Game</h1>
-                <div>
-                    <City city={data[actualCityPosition]} isActual></City>
-                    <City city={data[randomNumber]}></City>
-                    <div>
-                        <button onClick={() =>checkResult(true)}> More</button>
-                        <button onClick={() =>checkResult(false)}> Less</button>
+                <div className="box">
+                    <div className="boxFirstCity">
+                    <City city={data[actualCityPosition]} isActual/>
                     </div>
-                    <h2>Score:{score}</h2>
+                    <div className="boxSecondCity">
+                    <City city={data[randomNumber]}/>
+                        {/*<div className="actionButtonsBox">*/}
+                            <button onClick={() =>checkResult(true)}> More</button>
+                            <button onClick={() =>checkResult(false)}> Less</button>
+                        {/*</div>*/}
+                    </div>
                 </div>
+            <div className="score">
+                <h2>Score: {score}</h2>
+            </div>
+            <div className="highScore">
+                <h2>High Score: {score}</h2>
+            </div>
         </div>
     );
 }
