@@ -1,0 +1,11 @@
+.cityBox{
+    display: flex;
+}
+.flag{
+    opacity: 0.5;
+    width: 100%;
+}
+
+.cityInfo{
+    position: absolute;
+}

@@ -43,3 +43,7 @@ height: 100vh;
     left: 0;
     margin-left: 10px;
 }
+.actionButton{
+    /* acomodar*/
+    margin:100px;
+}

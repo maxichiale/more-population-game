@@ -79,8 +79,8 @@ function Game() {
                     <div className="boxSecondCity">
                     <City city={data[randomNumber]}/>
                         {/*<div className="actionButtonsBox">*/}
-                            <button onClick={() =>checkResult(true)}> More</button>
-                            <button onClick={() =>checkResult(false)}> Less</button>
+                            <button className="actionButton" onClick={() =>checkResult(true)}> More</button>
+                            <button className="actionButton" onClick={() =>checkResult(false)}> Less</button>
                         {/*</div>*/}
                     </div>
                 </div>
