@@ -7,6 +7,7 @@ import {
 import './App.css';
 import Home from './pages/home/Home';
 import Game from './pages/game/Game';
+import Lost from './pages/lost/Lost';
 
 function App() {
     return(
@@ -18,6 +19,9 @@ function App() {
             <Switch>
                 <Route path="/game">
                     <Game />
+                </Route>
+                <Route path="/lost">
+                    <Lost />
                 </Route>
                 <Route path="/">
                     <Home />

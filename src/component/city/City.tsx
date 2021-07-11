@@ -8,7 +8,8 @@ function City(props: any) {
         <div className="game">
             <h1>{props.city.city} , {props.city.country}</h1>
             {props.isActual ? (
-            <p> {props.city.population} </p>
+                //todo tomar el es/en del navegador
+            <p> {props.city.population.toLocaleString("es")} </p>
             ):""}
         </div>
     );

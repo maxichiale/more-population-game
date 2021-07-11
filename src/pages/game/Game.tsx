@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
+import { useHistory } from "react-router-dom";
+
 import City from "../../component/city/City";
 import './Game.css';
+
 import data from "../../data";
 
 const randomIntFromInterval =(min:number, max:number) =>{ // min and max included
@@ -10,6 +13,7 @@ const randomIntFromInterval =(min:number, max:number) =>{ // min and max include
 function Game() {
     const [actualCityPosition, setActualCityPosition] = useState(randomIntFromInterval(0,99));
     const [score, setScore] = useState(0);
+    let history = useHistory();
 
     let randomNumber = randomIntFromInterval(0,99);
 
@@ -39,7 +43,7 @@ function Game() {
         }
         else
             console.log("no acerto")
-            setScore(0);
+            history.push("/lost");
         }
         else{
             if(data[actualCityPosition].population > data[randomNumber].population) {
@@ -59,7 +63,8 @@ function Game() {
             }
             else{
                 console.log("no acerto")
-                setScore(0);
+                history.push("/lost");
+
             }
         }
 
@@ -68,13 +73,15 @@ function Game() {
     return (
         <div className="game">
             <h1>The More Population Game</h1>
-            <City city={data[actualCityPosition]} isActual></City>
-            <City city={data[randomNumber]}></City>
-            <div>
-                <button onClick={() =>checkResult(true)}> More</button>
-                <button onClick={() =>checkResult(false)}> Less</button>
-            </div>
-            <h2>Score:{score}</h2>
+                <div>
+                    <City city={data[actualCityPosition]} isActual></City>
+                    <City city={data[randomNumber]}></City>
+                    <div>
+                        <button onClick={() =>checkResult(true)}> More</button>
+                        <button onClick={() =>checkResult(false)}> Less</button>
+                    </div>
+                    <h2>Score:{score}</h2>
+                </div>
         </div>
     );
 }
