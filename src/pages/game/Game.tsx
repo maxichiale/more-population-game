@@ -23,53 +23,51 @@ function Game() {
         randomNumber -=2;
     else if(randomNumber<0)
         randomNumber +=2;
-    const [gameCityPosition, setGameCityPosition] = useState(randomNumber);
 
     const checkResult = (more:boolean) =>{
         if(more){
-        if(data[actualCityPosition].population < data[gameCityPosition].population){
-            setActualCityPosition(gameCityPosition);
-            let random = randomIntFromInterval(0,99);
-
-            if(random == actualCityPosition)
-                random++;
-            if(random > 99)
-                random -=2;
-            else if(random<0)
-                random +=2;
-
-            setGameCityPosition(random);
+        if(data[actualCityPosition].population < data[randomNumber].population){
+            setActualCityPosition(randomNumber);
             setScore(score+1);
         }
         else{
             console.log("no acerto")
+            let highScore = localStorage.getItem('highScore');
+
+            debugger;
+            if(highScore) {
+                let hs = parseInt(highScore);
+                if(hs < score)
+                    localStorage.setItem('highScore', score.toString());
+            }else{
+                localStorage.setItem('highScore', score.toString());
+            }
             history.push("/lost");
+
         }
         }
         else{
-            if(data[actualCityPosition].population > data[gameCityPosition].population) {
-                setActualCityPosition(gameCityPosition);
-                let random = randomIntFromInterval(0,99);
-
-                if(random == actualCityPosition)
-                    random++;
-                if(random > 99)
-                    random -=2;
-                else if(random<0)
-                    random +=2;
-
-                setGameCityPosition(random);
+            if(data[actualCityPosition].population > data[randomNumber].population) {
+                setActualCityPosition(randomNumber);
                 setScore(score+1);
-
             }
             else{
                 console.log("no acerto")
-                history.push("/lost");
+                let highScore = localStorage.getItem('highScore');
 
+                if(highScore) {
+                    let hs = parseInt(highScore);
+                    if(hs < score)
+                        localStorage.setItem('highScore', score.toString());
+                }else{
+                    localStorage.setItem('highScore', score.toString());
+                }
+                history.push("/lost");
             }
         }
 
     }
+    const highScore = localStorage.getItem('highScore');
 
     return (
         <div className="game">
@@ -78,7 +76,7 @@ function Game() {
                     <City city={data[actualCityPosition]} isActual/>
                     </div>
                     <div className="boxSecondCity">
-                    <City city={data[gameCityPosition]}>
+                    <City city={data[randomNumber]}>
                         <button className="actionButton" onClick={() =>checkResult(true)}> More</button>
                         <button className="actionButton" onClick={() =>checkResult(false)}> Less</button>
                     </City>
@@ -88,7 +86,7 @@ function Game() {
                 <h2>Score: {score}</h2>
             </div>
             <div className="highScore">
-                <h2>High Score: {score}</h2>
+                <h2>High Score: {highScore ?? 0}</h2>
             </div>
         </div>
     );
