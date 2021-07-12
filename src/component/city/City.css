@@ -1,11 +1,23 @@
 .cityBox{
     display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-.flag{
-    opacity: 0.5;
+.background{
+    opacity: 0.2;
     width: 100%;
+    position: absolute;
+    height: 100%;
 }
 
-.cityInfo{
+.actionsBox{
     position: absolute;
+    bottom: 150px;
+}
+
+.cityTitle{
+    font-weight: 600;
+    font-size: 30px;
 }

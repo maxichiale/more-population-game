@@ -27,8 +27,8 @@ function Game() {
 
     const checkResult = (more:boolean) =>{
         if(more){
-        if(data[actualCityPosition].population < data[randomNumber].population){
-            setActualCityPosition(randomNumber);
+        if(data[actualCityPosition].population < data[gameCityPosition].population){
+            setActualCityPosition(gameCityPosition);
             let random = randomIntFromInterval(0,99);
 
             if(random == actualCityPosition)
@@ -41,13 +41,14 @@ function Game() {
             setGameCityPosition(random);
             setScore(score+1);
         }
-        else
+        else{
             console.log("no acerto")
             history.push("/lost");
         }
+        }
         else{
-            if(data[actualCityPosition].population > data[randomNumber].population) {
-                setActualCityPosition(randomNumber);
+            if(data[actualCityPosition].population > data[gameCityPosition].population) {
+                setActualCityPosition(gameCityPosition);
                 let random = randomIntFromInterval(0,99);
 
                 if(random == actualCityPosition)
@@ -77,11 +78,10 @@ function Game() {
                     <City city={data[actualCityPosition]} isActual/>
                     </div>
                     <div className="boxSecondCity">
-                    <City city={data[randomNumber]}/>
-                        {/*<div className="actionButtonsBox">*/}
-                            <button className="actionButton" onClick={() =>checkResult(true)}> More</button>
-                            <button className="actionButton" onClick={() =>checkResult(false)}> Less</button>
-                        {/*</div>*/}
+                    <City city={data[gameCityPosition]}>
+                        <button className="actionButton" onClick={() =>checkResult(true)}> More</button>
+                        <button className="actionButton" onClick={() =>checkResult(false)}> Less</button>
+                    </City>
                     </div>
                 </div>
             <div className="score">

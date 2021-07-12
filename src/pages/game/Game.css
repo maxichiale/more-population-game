@@ -44,6 +44,7 @@ height: 100vh;
     margin-left: 10px;
 }
 .actionButton{
-    /* acomodar*/
-    margin:100px;
+    margin:10px;
+    border-radius: 10px;
+    height: 30px;
 }
