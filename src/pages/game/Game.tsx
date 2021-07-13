@@ -17,7 +17,7 @@ function Game() {
 
     let randomNumber = randomIntFromInterval(0,99);
 
-    if(randomNumber == actualCityPosition)
+    if(randomNumber === actualCityPosition)
         randomNumber++;
     if(randomNumber > 99)
         randomNumber -=2;
