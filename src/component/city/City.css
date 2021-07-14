@@ -31,3 +31,18 @@
 .countryFlag{
     margin-left: 20px;
 }
+
+@media all and (max-width: 800px) {
+    .cityTitle{
+        font-weight: 600;
+        font-size: 18px;
+    }
+    .actionsBox{
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: inherit;
+        bottom: auto;
+    }
+}

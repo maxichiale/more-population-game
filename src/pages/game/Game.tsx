@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useHistory } from "react-router-dom";
 
 import City from "../../component/city/City";
@@ -13,16 +13,27 @@ const randomIntFromInterval =(min:number, max:number) =>{ // min and max include
 function Game() {
     const [actualCityPosition, setActualCityPosition] = useState(randomIntFromInterval(0,99));
     const [score, setScore] = useState(0);
+
+    const [width, setWidth] = useState<number>(window.innerWidth);
+    function handleWindowSizeChange() {
+        setWidth(window.innerWidth);
+    }
+    useEffect(() => {
+        window.addEventListener('resize', handleWindowSizeChange);
+        return () => {
+            window.removeEventListener('resize', handleWindowSizeChange);
+        }
+    }, []);
+
+    let isMobile: boolean = (width <= 800);
+
     let history = useHistory();
 
     let randomNumber = randomIntFromInterval(0,99);
 
-    if(randomNumber === actualCityPosition)
-        randomNumber++;
-    if(randomNumber > 99)
-        randomNumber -=2;
-    else if(randomNumber<0)
-        randomNumber +=2;
+    while(randomNumber === actualCityPosition)
+        randomNumber = randomIntFromInterval(0,99);
+
 
     const checkResult = (more:boolean) =>{
         if(more){
@@ -31,10 +42,8 @@ function Game() {
             setScore(score+1);
         }
         else{
-            console.log("no acerto")
             let highScore = localStorage.getItem('highScore');
 
-            debugger;
             if(highScore) {
                 let hs = parseInt(highScore);
                 if(hs < score)
@@ -77,16 +86,22 @@ function Game() {
                     </div>
                     <div className="boxSecondCity">
                     <City city={data[randomNumber]}>
-                        <button className="actionButton" onClick={() =>checkResult(true)}> More</button>
-                        <button className="actionButton" onClick={() =>checkResult(false)}> Less</button>
+                        {isMobile ? <>
+                                <button className="actionButton" onClick={() => checkResult(true)}> ▲ More</button>
+                                <button className="actionButton" onClick={() => checkResult(false)}> ▼ Less</button>
+                            </> :
+                            <>
+                                <button className="actionButton" onClick={() => checkResult(false)}> ▼ Less</button>
+                                <button className="actionButton" onClick={() =>checkResult(true)}> ▲ More</button>
+                            </>}
                     </City>
                     </div>
                 </div>
             <div className="score">
-                <h2>Score: {score}</h2>
+                <h2 className="scoreText">Score: {score}</h2>
             </div>
             <div className="highScore">
-                <h2>High Score: {highScore ?? 0}</h2>
+                <h2 className="highScoreText">High Score: {highScore ?? 0}</h2>
             </div>
         </div>
     );
