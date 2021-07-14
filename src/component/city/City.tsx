@@ -15,9 +15,11 @@ function City(props: any) {
             {/*<img className="background" src={`https://robohash.org/${props.city.city}`}></img>*/}
             {/*<img className="background" src=""></img>*/}
             <div className="cityInfo">
-                <h1 className="cityTitle">{props.city.city} , {props.city.country} {emoji}</h1>
-                <span> { "Population: "} </span>
-                <span> {population} </span>
+                <div className="cityTitleBox">
+                <h1 className="cityTitle">{props.city.city} , {props.city.country}</h1>
+                <img className="countryFlag" src={`https://www.countryflags.io/${props.city.code}/shiny/64.png`} alt={`${props.city.country} flag`}/>
+                </div>
+                <span className="population">{`Population: ${population}`} </span>
             </div>
             <div className="actionsBox">
                 {props.children}

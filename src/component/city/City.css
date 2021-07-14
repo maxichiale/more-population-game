@@ -16,8 +16,18 @@
     position: absolute;
     bottom: 150px;
 }
-
+.cityTitleBox {
+    display: flex;
+}
 .cityTitle{
     font-weight: 600;
-    font-size: 30px;
+    font-size: 32px;
+}
+
+.population{
+    display: flex;
+}
+
+.countryFlag{
+    margin-left: 20px;
 }
