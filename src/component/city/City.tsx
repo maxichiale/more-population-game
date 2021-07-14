@@ -3,9 +3,7 @@ import React from 'react';
 import './City.css';
 
 function City(props: any) {
-    const getFlagEmoji = (countryCode:any)=>String.fromCodePoint(...[...countryCode.toUpperCase()].map(x=>0x1f1a5+x.charCodeAt()))
 
-    let emoji = getFlagEmoji(props.city.code);
     let population  = props.isActual ? props.city.population.toLocaleString("es") : "";
     return (
         <div className="cityBox">
