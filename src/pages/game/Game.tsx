@@ -51,7 +51,9 @@ function Game() {
             }else{
                 localStorage.setItem('highScore', score.toString());
             }
-            history.push("/lost");
+            history.push({pathname:"/lost",state: {score:score}})
+
+            // history.push("/lost",score);
 
         }
         }
@@ -61,7 +63,6 @@ function Game() {
                 setScore(score+1);
             }
             else{
-                console.log("no acerto")
                 let highScore = localStorage.getItem('highScore');
 
                 if(highScore) {
@@ -71,7 +72,7 @@ function Game() {
                 }else{
                     localStorage.setItem('highScore', score.toString());
                 }
-                history.push("/lost");
+                history.push({pathname:"/lost",state: {score:score}})
             }
         }
 
