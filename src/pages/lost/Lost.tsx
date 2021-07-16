@@ -10,6 +10,8 @@ import './Lost.css';
 function Lost() {
 
     const location = useLocation();
+    //todo revisar esto
+    // @ts-ignore
     const {score} = location.state;
 
     const [image,setImage] = useState();
