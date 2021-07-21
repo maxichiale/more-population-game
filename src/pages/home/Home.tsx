@@ -12,7 +12,6 @@ function Home() {
     return (
         <div className="home">
             <img src={background} className="background" alt="logo" />
-
             <div className="info">
                 <div className="titleBox">
 
@@ -21,8 +20,10 @@ function Home() {
 
                 <p className="subtitle">Who has more population?</p>
                 <Link className="play" to="/game">Play</Link>
-                <a className="github" href="https://github.com/maxichiale/more-population-game" >
-                    <img className="github" src={github}  alt="github" />
+            </div>
+            <div className="githubBox">
+                <a className="githubLink" href="https://github.com/maxichiale/more-population-game" >
+                    <img className="githubLogo" src={github}  alt="github" />
                 </a>
             </div>
         </div>
