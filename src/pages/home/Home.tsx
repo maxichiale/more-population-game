@@ -4,6 +4,8 @@ import {
 } from "react-router-dom";
 import './Home.css';
 import background from './../../images/Poblacion_Mundial_746x419.jpeg'
+import github from './../../images/github.png'
+
 function Home() {
 
 
@@ -19,8 +21,10 @@ function Home() {
 
                 <p className="subtitle">Who has more population?</p>
                 <Link className="play" to="/game">Play</Link>
+                <a className="github" href="https://github.com/maxichiale/more-population-game" >
+                    <img className="github" src={github}  alt="github" />
+                </a>
             </div>
-
         </div>
     );
 }
