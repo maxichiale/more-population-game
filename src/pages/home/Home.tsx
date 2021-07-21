@@ -3,7 +3,7 @@ import {
     Link
 } from "react-router-dom";
 import './Home.css';
-import background from './../../images/Poblacion_Mundial_746x419.jpeg'
+import background from '../../images/home_background.jpeg'
 import github from './../../images/github.png'
 
 function Home() {
